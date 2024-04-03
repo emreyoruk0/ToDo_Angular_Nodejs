@@ -5,14 +5,16 @@
 
 const uri = "mongodb+srv://emreyoruk:VD9qAxtJKPCrkPTq@eternalib.06ijzom.mongodb.net/?retryWrites=true&w=majority&appName=eternaLib";
 
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
 mongoose.set("strictQuery", false);
-mongoose.connect(uri, (err)=>{
-    if(!err){
-        console.log("Bağlantı başarılı");
-    };
-});
+
+
+mongoose.connect(uri)
+    .then(() => console.log("MongoDB'ye bağlantı başarılı"))
+    .catch(err => console.log(err));
+
+
 
 const express = require('express');
 const app = express(); 
@@ -20,10 +22,15 @@ const app = express();
 const cors = require('cors');
 app.use(cors({
     credentials: true,
-    origin: ["http://localhost:4200"] // tüm istekleri kabul etsin diye
+    origin: ["http://localhost:4200"] 
 }));
 
 const port = 5000;
+
+app.get("/test",(req,res)=> {
+    res.send("Api çalışıyor..."); //şu anda herşey çalışıyor gibi sen table filan ekleyince hata alıp çözemezsen yine yazarsın ok?
+});
+
 app.listen(port, ()=>{
-    console.log("Site http://localhost:" + port + " adresinde çalışıyor");
-})
+    console.log("Site http://localhost:" + port + " üzerinden ayağa kaldırıldı.");
+});
