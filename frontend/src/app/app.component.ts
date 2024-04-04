@@ -22,31 +22,40 @@ export class AppComponent {
 
   constructor(
     private _http: HttpClient
-  ){}
+  ){
+    this.getAll();
+  }
 
-  getAll(){ // get<TodoModel[]> ile TodoModel[] tipinde dizi döneceğini belirttik
+  // Tüm elemanları getirir
+  getAll(){
+    // get<TodoModel[]> ile TodoModel[] tipinde dizi döneceğini belirttik
     this._http.get<TodoModel[]>(this.apiUrl + "/getall").subscribe(res=>{
       this.todos = res;
     });
   }
 
+  // Eleman eklemek için
   add(){
     let model = {"work": this.work};
     this._http.post<any>(this.apiUrl + "/add", model).subscribe(res=>{
-      this.getAll();
+      this.getAll(); // eklemeden sonra güncel listeyi getirir
     });
   }
 
+  // Eleman silmek için
   delete(model: TodoModel){
     this._http.post<any>(this.apiUrl + "/delete", model).subscribe(res=>{
       this.getAll();
     });
   }
 
+
+  // Güncellenecek elemanı almak için
   get(model: TodoModel){
     this.updateModel = {...model}; // referansı bağlanmasın sadece değerleri gitsin diye
   }
 
+  // Güncelleme işlemi
   update(){
     this._http.post<any>(this.apiUrl + "/update", this.updateModel).subscribe(res=>{
       this.getAll();

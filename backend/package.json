@@ -1,6 +1,8 @@
 {
+  "scripts": {
+    "start": "nodemon db.js"
+  },
   "dependencies": {
-    "start": "npm start",
     "cors": "^2.8.5",
     "express": "^4.19.2",
     "mongoose": "^8.3.0"
