@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var schema = mongoose.Schema;
 
-// MongoDb'de hangi şekildeyse burada da o şekilde şemasını oluşturuyoruz
+// MongoDb'de veriyi hangi yapıda tutmak istiyorsak o şekilde şemasını oluşturuyoruz, _id kendiliğinden oluşur.
 var todoSchema = new schema({
     work: String,
     isCompleted: Boolean

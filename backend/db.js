@@ -27,17 +27,17 @@ app.use(cors({
     origin: ["http://localhost:4200"] 
 }));
 
+
 //**** İstekleri buraya yani cors ve listen arasına yazmalıyız*** */
 
 // Mevcut tüm verileri getirir
 app.get("/api/getall", (req, res) => {
-    Todo.find({}) // Tüm verileri getir ve bir Promise döndür
+    Todo.find({}) // {} dediğimiz için tüm verileri getirir
         .then(data => {
             res.send(data); // Verileri geri gönder
         })
         .catch(err => {
             console.error(err); // Hata durumunda hatayı konsola yazdır
-            res.status(500).send("Sunucu hatası"); // Sunucu hatası durumunda istemciye 500 hatası gönder
         });
 });
 
@@ -84,7 +84,6 @@ app.post("/api/update", (req, res)=>{
         throw err;
     });
 });
-
 //************************************************************* */
 
 const port = 5000;

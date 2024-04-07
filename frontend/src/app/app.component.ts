@@ -8,13 +8,11 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,
-    CommonModule,
-  FormsModule],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  imports: [RouterOutlet, CommonModule, FormsModule],
+  templateUrl: './app.component.html'
 })
 export class AppComponent {
+  isUpdate: boolean = false;
   apiUrl: string = 'http://localhost:5000/api';
   work = '';
   todos: TodoModel[] = [];
@@ -40,6 +38,7 @@ export class AppComponent {
     this._http.post<any>(this.apiUrl + "/add", model).subscribe(res=>{
       this.getAll(); // eklemeden sonra güncel listeyi getirir
     });
+    this.work = ''; // ekleme işleminden sonra input alanını temizler
   }
 
   // Eleman silmek için
@@ -60,5 +59,6 @@ export class AppComponent {
     this._http.post<any>(this.apiUrl + "/update", this.updateModel).subscribe(res=>{
       this.getAll();
     });
+    this.updateModel = new TodoModel(); // güncelleme işleminden sonra modeli sıfırlar
   }
 }
