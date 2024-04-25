@@ -1,7 +1,7 @@
 // mongoose  -> MongoDb ile bağlantı kurmamızı ve oraya işlemler yapabilmemizi sağlar
 // express   -> API isteklerini yazabilmemizi sağlar
 // cors      -> cors politikalarını ayarlamamızı sağlar. Bu sayede frontend'den istek attığımızda hataya düşmez
-// nodemon   -> nodejs'i ayağa kaldırır
+// nodemon   -> nodejs'i ayağa kaldırır..
 
 const uri = "mongodb+srv://emreyoruk:VD9qAxtJKPCrkPTq@eternalib.06ijzom.mongodb.net/?retryWrites=true&w=majority&appName=eternaLib";
 
