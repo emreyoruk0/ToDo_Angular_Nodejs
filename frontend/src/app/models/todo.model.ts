@@ -1,4 +1,4 @@
-// databasemizdeki veriler hangi yapıdaysa o yapıda bir model oluşturup o şekilde kullanmamız gerek
+// veritabanında veriler hangi yapıdaysa o yapıda bir model oluşturup o şekilde kullanmamız gerek
 
 export class TodoModel{
   _id: string = "";

@@ -1,9 +1,21 @@
 <div class="container">
 
   <div *ngIf="!isUpdate; else updateForm">
-    <div class="form-group">
-      <label for="work">Yapılacak İş</label>
-      <input type="text" name="work" [(ngModel)]="work" id="work" class="form-control">
+    <div class="row">
+      <div class="col-md-10">
+        <div class="form-group">
+          <label for="work" class="form-label">Yapılacak İş</label>
+          <input type="text"[(ngModel)]="workForAdd.work" id="work" class="form-control">
+        </div>
+      </div>
+      <div class="col-md-2 mt-auto">
+        <div class="form-check">
+          <input type="checkbox" [(ngModel)]="workForAdd.isCompleted" class="form-check-input">
+          <label class="form-check-label">
+            Yapıldı olarak işaretle
+          </label>
+        </div>
+      </div>
     </div>
     <div class="form-group mt-1 text-center">
       <button class="btn btn-outline-primary w-50" (click)="add()">Kaydet</button>
@@ -13,12 +25,26 @@
 
 
   <ng-template #updateForm>
-    <div class="form-group">
-      <label for="work">Güncellenecek İş</label>
-      <input type="text" name="work" [(ngModel)]="updateModel.work" id="work" class="form-control">
+    <div class="row">
+      <div class="col-md-10">
+        <div class="form-group">
+          <label for="work" class="form-label">Güncellenecek İş</label>
+          <input type="text" [(ngModel)]="updateModel.work" id="work" class="form-control">
+        </div>
+      </div>
+      <div class="col-md-2 mt-auto">
+        <div class="form-check">
+          <input type="checkbox" [(ngModel)]="updateModel.isCompleted" class="form-check-input">
+          <label class="form-check-label">
+            Yapıldı olarak değiştir
+          </label>
+        </div>
+      </div>
     </div>
+
     <div class="form-group mt-1 text-center">
       <button class="btn btn-outline-success w-50" (click)="update(); isUpdate = false">Güncelle</button>
+      <button class="btn btn-outline-danger w-50" (click)="isUpdate = false">İptal Et</button>
     </div>
     <hr>
   </ng-template>
@@ -40,11 +66,18 @@
           <td> {{todo.work}} </td>
           <td> {{todo.isCompleted ? "Yapıldı" : "Yapılacak"}} </td>
           <td>
-            <button class="btn btn-outline-warning btn-sm" (click)="get(todo); isUpdate = true">Güncelle</button>
-            <button class="btn btn-outline-danger btn-sm mx-1" (click)="delete(todo)">Sil</button>
+            <button class="btn btn-outline-warning btn-sm" (click)="getElementForUpdate(todo); isUpdate = true">
+              <i class="fa fa-edit"></i>
+            </button>
+            <button class="btn btn-outline-danger btn-sm mx-1" (click)="delete(todo)">
+              <i class="fa fa-trash"></i>
+            </button>
           </td>
         </tr>
       </tbody>
     </table>
   </div>
+
 </div>
+
+
