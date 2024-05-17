@@ -30,17 +30,17 @@ app.use(cors({
 // Mevcut tüm verileri getirir -> http://localhost:5000/api/getall
 app.get("/api/getall", (req, res) => {
     Todo.find({}) // {} dediğimiz için tüm verileri getirir
-        .then(data => res.send(data)) // Verileri geri gönder
+        .then(data => res.send(data)) // Verileri frontende gönderir
         .catch(err => console.error(err)); // Hata durumunda hatayı konsola yazdır
 });
 
 
 // Veri eklemeye yarar -> http://localhost:5000/api/add
 app.post("/api/add", (req, res) =>{
-    const {work, isCompleted} = req.body; // req.body'den objenin sadece work kısmını alır
+    console.log(req.body); // -> { work: 'eklenen veri', isCompleted: true}
+    const {work, isCompleted} = req.body; // req.body'den objenin work, isCompleted kısımlarını alır
     // req.body -> frontend'den gelen verileri içerir
     
-    console.log(req.body); // -> { work: 'eklenen veri' }
 
     const todo = new Todo({
         work: work, // oluşturulan todo nesnesinin work kısmına frontend'den gelen veriyi atar

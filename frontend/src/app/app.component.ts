@@ -37,8 +37,8 @@ export class AppComponent implements OnInit {
   // Eleman eklemek için -> http://localhost:5000/api/add adresine post isteği atar
   add(){
     let model = {
-        "work": this.workForAdd.work,
-        "isCompleted": this.workForAdd.isCompleted
+        work: this.workForAdd.work,
+        isCompleted: this.workForAdd.isCompleted
       };
 
     if(model.work == "") {
