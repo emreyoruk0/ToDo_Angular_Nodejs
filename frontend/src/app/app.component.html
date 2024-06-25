@@ -5,7 +5,7 @@
       <div class="col-md-10">
         <div class="form-group">
           <label for="work" class="form-label">Yapılacak İş</label>
-          <input type="text"[(ngModel)]="workForAdd.work" id="work" class="form-control">
+          <input type="text" [(ngModel)]="workForAdd.work" id="work" class="form-control">
         </div>
       </div>
       <div class="col-md-2 mt-auto">
@@ -62,9 +62,9 @@
       </thead>
       <tbody>
         <tr *ngFor="let todo of todos let i = index">
-          <td> {{i+1}} </td>
-          <td> {{todo.work}} </td>
-          <td> {{todo.isCompleted ? "Yapıldı" : "Yapılacak"}} </td>
+          <td> {{ i+1 }} </td>
+          <td> {{ todo.work }} </td>
+          <td> {{ todo.isCompleted ? "Yapıldı" : "Yapılacak" }} </td>
           <td>
             <button class="btn btn-outline-warning btn-sm" (click)="getElementForUpdate(todo); isUpdate = true">
               <i class="fa fa-edit"></i>

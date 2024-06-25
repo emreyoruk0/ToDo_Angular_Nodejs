@@ -56,6 +56,7 @@ app.post("/api/add", (req, res) =>{
 
 // Veri silmeye yarar -> http://localhost:5000/api/delete
 app.post("/api/delete", (req, res)=>{
+    // req.body -> { work: 'eklenen veri', isCompleted: true/false}
     const todo = new Todo(req.body); // frontend'den gelen req.body'den silinecek verinin tamamını obje şeklinde alır
 
     // alınan veriyi siler
